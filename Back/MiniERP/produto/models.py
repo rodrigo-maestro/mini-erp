@@ -1,15 +1,17 @@
 from django.db import models
 
 class Produto:
-    id_counter = 1
+    id_counter = 0
     produto_list = []
 
     def __init__(self, nome, preco, quantidade):
+        Produto.id_counter = Produto.id_counter + 1
+        
         self.id = Produto.id_counter
         self.nome = nome
         self.preco = preco
-        self.quantidade = quantidade
-        Produto.id_counter += 1
+        self.quantidade = quantidade        
+        
         Produto.produto_list.append(self)
 
     @classmethod
